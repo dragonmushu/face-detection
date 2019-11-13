@@ -7,3 +7,7 @@
 .venv
 env/
 venv/
+
+
+#### Image Folder ####
+images/
