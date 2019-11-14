@@ -8,6 +8,8 @@
 env/
 venv/
 
+### cache ###
+__pycache__/
 
 #### Image Folder ####
 images/
