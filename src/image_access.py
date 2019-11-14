@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 
 import os
-import sys
 import copy
 
 class ImageAccess:
@@ -85,9 +84,9 @@ class ImageAccess:
         return -1
 
     def _orientation(self, filename):
-        if filename.find("l_"):
+        if filename.find("l_") != -1:
             return self.LEFT
-        if filename.find("r_"):
+        if filename.find("r_") != -1:
             return self.RIGHT
 
     def initialize(self):
@@ -125,6 +124,23 @@ class ImageAccess:
 
     @staticmethod
     def obtain_images(i_type=1, i_person=0, i_degrees=0, i_orientation=0, i_color=1):
+        """
+        Function to obtain images you want to use for processing or testing 
+
+        Note:
+            if obtaining rgb images be careful not to choose too many so you don't run out of memory
+
+        Args:
+            i_type: type of image (see above, could be train or test). Default set to ImageAccess.ALL_TYPES
+            i_person: person you want (see above). Default set to ImageAccess.ALL_PERSONS
+            i_degrees: image angle desired (see above, could be 0, 30, 45). Default set to ImageAccess.ALL_DEGREES
+            i_orientation: desired orientation (see above, could be left or right). Default set to ImageAccess.ALL_PERSONS
+            i_color: image color scheme (see above). Default set to ImageAccess.Grayscale
+
+        Returns:
+            np array of images filtered from data frame
+        """
+        
         instance = ImageAccess._get_instance()
         current_df = instance._images
 
@@ -136,15 +152,12 @@ class ImageAccess:
             current_df = current_df.loc[current_df['Degree'] == i_degrees]
         if i_orientation != ImageAccess.ALL_ORIENTATIONS:
             current_df = current_df.loc[current_df['Orientation'] == i_orientation]
-        
-        pd.set_option('max_colwidth', 1000)
-        print(current_df['Filename'])
 
         images = []
         if i_color == ImageAccess.RGB:
             filenames = current_df['Filename'].to_list()
             images = [cv2.cvtColor(cv2.imread(filename), cv2.COLOR_BGR2RGB) for filename in filenames]
-            return images
+            return np.array(images)
         else:
             images = current_df['Grayscale'].to_numpy()
             return copy.deepcopy(images)
