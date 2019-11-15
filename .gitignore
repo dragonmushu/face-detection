@@ -1,9 +1,14 @@
 #### Jupyter Notebook ####
 .ipynb_checkpoints
 
-
 #### Environments ####
 .env
 .venv
 env/
 venv/
+
+### cache ###
+__pycache__/
+
+#### Image Folder ####
+images/
