@@ -20,6 +20,9 @@ class ImageAccess:
      # singleton static instance   
     _instance = None
 
+    # image size
+    IMAGE_SIZE = 256
+
     # image type constants
     ALL_TYPE = 0
     TRAIN = 1
@@ -109,6 +112,7 @@ class ImageAccess:
             image_dict['Orientation'] = self._orientation(filename)
             image_dict['Filename'] = filename
             image = cv2.imread(filename)
+            image = cv2.resize(image, (ImageAccess.IMAGE_SIZE, ImageAccess.IMAGE_SIZE))
             image_dict['Grayscale'] = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             all_rows.append(image_dict)
 
