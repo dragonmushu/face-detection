@@ -12,3 +12,6 @@ __pycache__/
 
 #### Image Folder ####
 images/
+
+#### Pickle Files ####
+*.pkl
