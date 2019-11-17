@@ -14,7 +14,7 @@ created
 # only call function obtain_images: ImageAccess.obtain_images(i_type, i_person, i_degrees, i_orientation, i_color)
 
 # obtain all akshay training images as grayscale
-images_1 = ImageAccess.obtain_images(i_person=ImageAccess.AKSHAY)
+images_1 = ImageAccess.obtain_images(i_person=ImageAccess.ANGELA)
 print(images_1.shape)
 # obtain all 30 degrees nabilah training images as grayscale
 images_2 = ImageAccess.obtain_images(i_person=ImageAccess.NABILAH, i_degrees=ImageAccess.DEG_30)
