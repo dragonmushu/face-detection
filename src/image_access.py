@@ -94,7 +94,7 @@ class ImageAccess:
 
     def initialize(self):
         # obtain filenames from images directory
-        dirname = os.path.join(os.path.dirname(os.getcwd()), 'images\\')
+        dirname = os.path.join(os.path.dirname(os.getcwd()), 'images')
         all_files = os.listdir(dirname)
         all_image_files = [name for name in all_files if name.endswith('.jpg')]
         
