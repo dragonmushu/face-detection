@@ -1,3 +1,5 @@
+import numpy as np
+
 NUMBER_LABELS = 5
 
 #### LABELS ####
@@ -46,13 +48,30 @@ def label_to_name(label):
     if label == NABILAH:
         return 'NABILAH'
 
+def get_accuracy(predictions, labels):
+    """
+    Function to compute accuracy of predictions: ratio of correct predictions to total predictions
 
+    Args:
+        predictions: np array of predictions 
+        labels: correct labels for test images
 
-
-def accuracy(predictions, labels):
+    Returns:
+        accuracy of the prediction data set
+    """
     return np.sum(predictions == labels) / len(labels)
 
-def confusion_matrix(predictions, labels):
+def get_confusion_matrix(predictions, labels):
+    """
+    Function to compute confusion matrix
+
+    Args:
+        predictions: np array of predictions 
+        labels: correct labels for test images
+
+    Returns:
+        confusion matrix of the prediction data set
+    """
     matrix = np.zeros((NUMBER_LABELS, NUMBER_LABELS))
     for i in range(0, NUMBER_LABELS):
         label_indices = np.where(labels == i)[0]

@@ -12,11 +12,11 @@ from helper import *
 IMAGE_COMPRESSION_SIZE = 256
 
 def type_from_filename(filename):
-        if filename.find("test") != -1:
-            return DataType.TEST
-        if filename.find("train") != -1:
-            return DataType.TRAIN
-        return -1
+    if filename.find("test") != -1:
+        return DataType.TEST
+    if filename.find("train") != -1:
+        return DataType.TRAIN
+    return -1
 
 def person_from_filename(filename):
     if filename.find("akshay") != -1:
@@ -132,7 +132,7 @@ class ImageAccess:
         return current_df
 
     @staticmethod
-    def obtain_images(i_type=Type.TRAIN, i_person=Label.ALL_PERSONS, i_degrees=Angle.ALL_DEGREES, i_orientation=Orientation.ALL_ORIENTATIONS, i_color=Color.RGB):
+    def obtain_images(i_type=DataType.TRAIN, i_person=Label.ALL_PERSONS, i_degrees=Angle.ALL_DEGREES, i_orientation=Orientation.ALL_ORIENTATIONS, i_color=Color.GRAYSCALE):
         """
         Function to obtain images you want to use for processing or testing 
 
@@ -160,7 +160,7 @@ class ImageAccess:
             return images
 
     @staticmethod
-    def obtain_labeled_data(i_type=Type.TRAIN, i_person=Label.ALL_PERSONS, i_degrees=Angle.ALL_DEGREES, i_orientation=Orientation.ALL_ORIENTATIONS, i_color=Color.RGB):
+    def obtain_labeled_data(i_type=DataType.TRAIN, i_person=Label.ALL_PERSONS, i_degrees=Angle.ALL_DEGREES, i_orientation=Orientation.ALL_ORIENTATIONS, i_color=Color.GRAYSCALE):
         """
         Function to obtain images with person label (see helper.py) you want to use for processing or testing 
 
@@ -188,3 +188,4 @@ class ImageAccess:
             images = current_df['Grayscale'].to_numpy()
             labels = current_df['Person'].to_numpy()
             return images, labels
+    

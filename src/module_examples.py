@@ -10,7 +10,7 @@ Module used to show use cases (examples) for different helper classes
 created
 """
 
-# ImageAccess Class use case
+### ImageAccess Class use case ###
 # Initially import ImageAccess from image_accesss module (see above)
 
 # only call function obtain_images: ImageAccess.obtain_images(i_type, i_person, i_degrees, i_orientation, i_color)
@@ -36,3 +36,19 @@ plt.imshow(images_3[0], cmap='gray')
 plt.show()
 plt.imshow(images_4[0])
 plt.show()
+
+# obtain all training data with corresponding labels
+X_train, Y_train = ImageAccess.obtain_labeled_data() # everything default gives training images
+
+
+### helper module use case ###
+# initially import all from helper module (see above)
+
+# check accuracy of Y_train on Y_train (should give 100 % or 1)
+accuracy = get_accuracy(Y_train, Y_train)
+print(accuracy)
+
+# check confusion matrix of Y_train on Y_train (should give identity matrix)
+matrix = get_confusion_matrix(Y_train, Y_train)
+print(matrix)
+
