@@ -12,6 +12,7 @@ __pycache__/
 
 #### Image Folder ####
 images/
+src/cropped/
 
 #### Pickle Files ####
 *.pkl
